@@ -73,15 +73,13 @@ def fig_gantt():
 #Layout
 app.title = "SS Dashboard"
 app.layout = html.Div(
-                children = [
-                    html.H1(id = 'H1', 
-                        children = 'Prototype of SS Dashboard', style = {'textAlign':'center',\
-                                            'marginTop':40,'marginBottom':40}), 
+                [
+                    html.H1(id = 'H1', children = 'Prototype of SS Dashboard', style = {'textAlign':'center', 'marginTop':40,'marginBottom':40}), 
                     html.Div(dcc.Graph(id = 'gantt', figure = fig_gantt())),
                     html.Div([dcc.Dropdown(id='fig_dropdown',options=[{'label': x, 'value': x} for x in df_gantt["Project"]],value="ISWMP")]),
                     html.Div(dcc.Graph(id = 'gantt_detail'))
-        ]
-    )
+            ]
+        )
 
 
 @app.callback(
@@ -104,4 +102,4 @@ def fig_gantt_detail(value):
 
 
 if __name__ == '__main__': 
-    app.run_server()
+    app.run_server(debug=True)
