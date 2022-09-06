@@ -63,7 +63,7 @@ def fig_gantt():
         type='line',
         yref='paper', y0=0, y1=1,
         xref='x', x0=today, x1=today
-        )], 
+        )],
         autosize=True, height=900)
     return fig
 
@@ -74,11 +74,16 @@ def fig_gantt():
 app.title = "SS Dashboard"
 app.layout = html.Div(
                 [
-                    html.H1(id = 'H1', children = 'Prototype of SS Dashboard', style = {'textAlign':'center', 'marginTop':40,'marginBottom':40}), 
-                    html.Div(dcc.Graph(id = 'gantt', figure = fig_gantt())),
-                    html.Div([dcc.Dropdown(id='fig_dropdown',options=[{'label': x, 'value': x} for x in df_gantt["Project"]],value="ISWMP")]),
-                    html.Div(dcc.Graph(id = 'gantt_detail'))
-            ]
+                    html.Div(
+                        html.H1(id = 'H1', children = 'Prototype of SS Dashboard', style = {'textAlign':'center', 'marginTop':40,'marginBottom':40})
+                    ), 
+                    html.Div([html.H3(id = "H3_phase", children = "Phase of projects"), dcc.Graph(id = 'gantt', figure = fig_gantt())], id = "container_1"),
+                    html.Div(
+                        [html.H3(id = "H3_project_detail", children = "Project detail"),
+                        html.Div([dcc.Dropdown(id='fig_dropdown',options=[{'label': x, 'value': x} for x in df_gantt["Project"]], value="ISWMP")], id = "left_container_2"),
+                        html.Div(dcc.Graph(id = 'gantt_detail'), id = "right_container_2")], 
+                        id = "container_2")
+            ], id = "container"
         )
 
 
@@ -96,10 +101,11 @@ def fig_gantt_detail(value):
         type='line',
         yref='paper', y0=0, y1=1,
         xref='x', x0=today, x1=today
-        )], 
+        )], plot_bgcolor = 'rgba(0, 0, 0, 0)',
+        paper_bgcolor = 'rgba(0, 0, 0, 0)',
         autosize=True, height=200)
     return fig
 
 
 if __name__ == '__main__': 
-    app.run_server(debug=True)
+    app.run_server(debug=False)
