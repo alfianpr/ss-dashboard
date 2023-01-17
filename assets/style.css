@@ -9,7 +9,8 @@ body {
     background-color:#ffffff;
   }
   #container_2{
-    background-color:#ddecf5;
+    background-color:#e8f0f5;
+    height: 800px;
   }
   #left_container_2 {
     /*height: 937px;*/
@@ -19,7 +20,7 @@ body {
   }
   #right_container_2 {
     margin-left: 340px;
-    background-color:#ddecf5;
+    background-color:#e8f0f5;
   }
   h1 {
     margin-top: 50px;

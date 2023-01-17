@@ -94,7 +94,7 @@ app.layout = html.Div(
 
 def fig_gantt_detail(value):
     fig = px.timeline(gantt_detail(project_name=value), color="Phase", color_discrete_map = colors,
-                    x_start="Start", x_end="Finish", y="Project")
+                    x_start="Start", x_end="Finish", y="Project", title="Progress")
 
     fig.update_layout(shapes=[
         dict(
